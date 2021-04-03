@@ -37,9 +37,6 @@ class Encode:
 
 		Returns:
 			bytes: bencode format
-
-		Todo:
-			* Create a function that automatically determines types and converts it to bencode format
 		"""
 		data = b""
 		for value in lst:
@@ -57,9 +54,6 @@ class Encode:
 
 		Returns:
 			bytes: bencode format
-
-		Todo:
-			* Create a function that automatically determines types and converts it to bencode format
 		"""
 		data = b""
 		for key, value in dictionary.items():
