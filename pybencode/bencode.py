@@ -27,3 +27,23 @@ class Encode:
 		"""
 		integer = str(integer).encode(ENCODING)
 		return b"i" + integer + b"e"
+
+	@classmethod
+	def encode_list(cls, lst: bytes) -> bytes:
+		"""Convert list type to bencode format
+
+		Args:
+			lst (bytes): you want to convert to bencode format
+
+		Returns:
+			bytes: bencode format
+
+		Todo:
+			* Create a function that automatically determines types and converts it to bencode format
+		"""
+		data = b""
+		for value in lst:
+			add_data = cls.encode(value)
+			data += add_data
+
+		return b"l" + data + b"e"
