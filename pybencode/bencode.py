@@ -199,3 +199,19 @@ class Decode:
 			content, remain = cls.decode_bytes(data)
 
 		return content, remain
+
+
+def encode(value) -> bytes:
+	"""Convert various types to bencode format
+
+	Args:
+		value: you want to convert to bencode format
+
+	Raises:
+		ValueError: unexpected type
+
+	Returns:
+		bytes: bencode format
+	"""
+	data = Encode.encode(value)
+	return data
