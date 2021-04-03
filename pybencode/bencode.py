@@ -68,3 +68,33 @@ class Encode:
 			data += encode_key + encode_value
 
 		return b"d" + data + b"e"
+
+	@classmethod
+	def encode(cls, value) -> bytes:
+		"""Convert various types to bencode format
+
+		Args:
+			value: you want to convert to bencode format
+
+		Raises:
+			ValueError: unexpected type
+
+		Returns:
+			bytes: bencode format
+		"""
+		value_type = type(value)
+		functions = {
+			bytes: cls.encode_bytes,
+			int: cls.encode_integer,
+			list: cls.encode_list,
+			dict: cls.encode_dictionary
+		}
+
+		for key in functions:
+			if value_type == key:
+				encode_data = functions[key](value)
+				break
+		else:
+			raise TypeError(f"unexpected type: {value_type}")
+
+		return encode_data
