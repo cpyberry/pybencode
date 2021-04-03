@@ -138,9 +138,6 @@ class Decode:
 
 		Returns:
 			tuple: list decoded and the rest of bencode format
-
-		Todo:
-			* Create a function that automatically determines types and converts bencode format to it
 		"""
 		contents = []
 
