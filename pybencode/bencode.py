@@ -215,3 +215,13 @@ def encode(value) -> bytes:
 	"""
 	data = Encode.encode(value)
 	return data
+
+
+def decode(data: bytes):
+	"""Convert bencode format to various types decoded and the rest of bencode format
+
+	Args:
+		data (bytes): bencode format
+	"""
+	content, _ = Decode.decode(data)
+	return content
