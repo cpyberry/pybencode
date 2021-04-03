@@ -92,3 +92,110 @@ class Encode:
 			raise TypeError(f"unexpected type: {value_type}")
 
 		return encode_data
+
+
+class Decode:
+	@staticmethod
+	def decode_bytes(data: bytes) -> tuple:
+		"""Convert bencode format to bytes decoded and the rest of bencode format
+
+		Args:
+			data (bytes): bencode format
+
+		Returns:
+			tuple: bytes decoded and the rest of bencode format
+		"""
+		data_len, data_all = data.split(b":", 1)
+		data_len = int(data_len)
+
+		data_content = data_all[:data_len]
+		data_remain = data_all[data_len:]
+
+		return data_content, data_remain
+
+	@staticmethod
+	def decode_integer(data: bytes) -> tuple:
+		"""Convert bencode format to int decoded and the rest of bencode format
+
+		Args:
+			data (bytes): bencode format
+
+		Returns:
+			tuple: int decoded and the rest of bencode format
+		"""
+		data_integer, data_remain = data.split(b"e", 1)
+
+		# skip b"i"
+		data_integer = int(data_integer[1:])
+		return data_integer, data_remain
+
+	@classmethod
+	def decode_list(cls, data: bytes) -> tuple:
+		"""Convert bencode format to list decoded and the rest of bencode format
+
+		Args:
+			data (bytes): bencode format
+
+		Returns:
+			tuple: list decoded and the rest of bencode format
+		"""
+		contents = []
+
+		# skip b"l"
+		data = data[1:]
+		while data and (not data.startswith(b"e")):
+			content, remain = cls.decode(data)
+			contents.append(content)
+			data = remain
+
+		# skip b"e"
+		remain = data[1:]
+
+		return contents, remain
+
+	@classmethod
+	def decode_dictionary(cls, data: bytes) -> tuple:
+		"""Convert bencode format to dict decoded and the rest of bencode format
+
+		Args:
+			data (bytes): bencode format
+
+		Returns:
+			tuple: dict decoded and the rest of bencode format
+		"""
+		content = {}
+
+		# get a list with the contents of key, value, key, value ...
+		items, remain = cls.decode_list(data)
+
+		for key_index in range(0, len(items), 2):
+			key = items[key_index]
+			content[key] = items[key_index + 1]
+
+		return content, remain
+
+	@classmethod
+	def decode(cls, data: bytes) -> tuple:
+		"""Convert bencode format to various types decoded and the rest of bencode format
+
+		Args:
+			data (bytes): bencode format
+
+		Returns:
+			tuple: various types decoded and the rest of bencode format
+		"""
+		# if data doesn't match these three, use decode_bytes
+		functions = {
+			b"i": cls.decode_integer,
+			b"l": cls.decode_list,
+			b"d": cls.decode_dictionary
+		}
+
+		for key in functions:
+			if data.startswith(key):
+				content, remain = functions[key](data)
+				break
+		else:
+			content, remain = cls.decode_bytes(data)
+
+		return content, remain
