@@ -155,3 +155,24 @@ class Decode:
 		remain = data[1:]
 
 		return contents, remain
+
+	@classmethod
+	def decode_dictionary(cls, data: bytes) -> tuple:
+		"""Convert bencode format to dict decoded and the rest of bencode format
+
+		Args:
+			data (bytes): bencode format
+
+		Returns:
+			tuple: dict decoded and the rest of bencode format
+		"""
+		content = {}
+
+		# get a list with the contents of key, value, key, value ...
+		items, remain = cls.decode_list(data)
+
+		for key_index in range(0, len(items), 2):
+			key = items[key_index]
+			content[key] = items[key_index + 1]
+
+		return content, remain
