@@ -176,3 +176,29 @@ class Decode:
 			content[key] = items[key_index + 1]
 
 		return content, remain
+
+	@classmethod
+	def decode(cls, data: bytes) -> tuple:
+		"""Convert bencode format to various types decoded and the rest of bencode format
+
+		Args:
+			data (bytes): bencode format
+
+		Returns:
+			tuple: various types decoded and the rest of bencode format
+		"""
+		# if data doesn't match these three, use decode_bytes
+		functions = {
+			b"i": cls.decode_integer,
+			b"l": cls.decode_list,
+			b"d": cls.decode_dictionary
+		}
+
+		for key in functions:
+			if data.startswith(key):
+				content, remain = functions[key](data)
+				break
+		else:
+			content, remain = cls.decode_bytes(data)
+
+		return content, remain
