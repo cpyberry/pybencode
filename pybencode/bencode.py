@@ -112,3 +112,19 @@ class Decode:
 		data_remain = data_all[data_len:]
 
 		return data_content, data_remain
+
+	@staticmethod
+	def decode_integer(data: bytes) -> tuple:
+		"""Convert bencode format to int decoded and the rest of bencode format
+
+		Args:
+			data (bytes): bencode format
+
+		Returns:
+			tuple: int decoded and the rest of bencode format
+		"""
+		data_integer, data_remain = data.split(b"e", 1)
+
+		# skip b"i"
+		data_integer = int(data_integer[1:])
+		return data_integer, data_remain
