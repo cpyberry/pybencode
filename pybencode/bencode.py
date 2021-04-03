@@ -92,3 +92,23 @@ class Encode:
 			raise TypeError(f"unexpected type: {value_type}")
 
 		return encode_data
+
+
+class Decode:
+	@staticmethod
+	def decode_bytes(data: bytes) -> tuple:
+		"""Convert bencode format to bytes decoded and the rest of bencode format
+
+		Args:
+			data (bytes): bencode format
+
+		Returns:
+			tuple: bytes decoded and the rest of bencode format
+		"""
+		data_len, data_all = data.split(b":", 1)
+		data_len = int(data_len)
+
+		data_content = data_all[:data_len]
+		data_remain = data_all[data_len:]
+
+		return data_content, data_remain
