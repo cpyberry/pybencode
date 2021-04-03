@@ -128,3 +128,30 @@ class Decode:
 		# skip b"i"
 		data_integer = int(data_integer[1:])
 		return data_integer, data_remain
+
+	@classmethod
+	def decode_list(cls, data: bytes) -> tuple:
+		"""Convert bencode format to list decoded and the rest of bencode format
+
+		Args:
+			data (bytes): bencode format
+
+		Returns:
+			tuple: list decoded and the rest of bencode format
+
+		Todo:
+			* Create a function that automatically determines types and converts bencode format to it
+		"""
+		contents = []
+
+		# skip b"l"
+		data = data[1:]
+		while data and (not data.startswith(b"e")):
+			content, remain = cls.decode(data)
+			contents.append(content)
+			data = remain
+
+		# skip b"e"
+		remain = data[1:]
+
+		return contents, remain
