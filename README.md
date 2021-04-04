@@ -2,6 +2,8 @@
 
 Simple bencode library for python
 
+![license](https://shields.io/github/license/cpyberry/pybencode)
+
 ## Usage
 
 ```python
