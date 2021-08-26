@@ -8,6 +8,9 @@ github: https://github.com/cpyberry
 """
 
 
+from typing import Any
+
+
 ENCODING = "ascii"
 
 
@@ -74,7 +77,7 @@ class Encode:
 		return b"d" + data + b"e"
 
 	@classmethod
-	def encode(cls, value) -> bytes:
+	def encode(cls, value: Any) -> bytes:
 		"""Convert various types to bencode format
 
 		Args:
@@ -211,7 +214,7 @@ class Decode:
 		return content, remain
 
 
-def encode(value) -> bytes:
+def encode(value: Any) -> bytes:
 	"""Convert various types to bencode format
 
 	Args:
@@ -227,7 +230,7 @@ def encode(value) -> bytes:
 	return data
 
 
-def decode(data: bytes):
+def decode(data: bytes) -> Any:
 	"""Convert bencode format to various types decoded and the rest of bencode format
 
 	Args:
