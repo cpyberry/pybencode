@@ -20,7 +20,13 @@ github: https://github.com/cpyberry
 """
 
 
-from .bencode import *
+from .bencode import (
+	ENCODING,
+	Encode,
+	Decode,
+	encode,
+	decode,
+)
 
 
 __copyright__ = "Copyright 2021 cpyberry"
