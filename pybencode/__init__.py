@@ -28,10 +28,14 @@ from .bencode import (
 	decode,
 )
 
-
-__copyright__ = "Copyright 2021 cpyberry"
-__url__ = "https://github.com/cpyberry/pybencode"
-__license__ = "Apache-2.0 License"
-__version__ = "1.0.1"
-__author__ = "cpyberry"
-__author_email__ = "cpyberry222@gmail.com"
+from .__info__ import (
+	__title__,
+	__description__,
+	__copyright__,
+	__url__,
+	__license__,
+	__version__,
+	__author__,
+	__author_email__,
+	__python_requires__
+)
