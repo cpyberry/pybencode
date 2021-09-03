@@ -10,3 +10,5 @@
 
 * Add the function to encode to bencode
 * Add the function to decode bencode
+
+Since these functions are processed recursively, they also support nested list and dictionary type.
