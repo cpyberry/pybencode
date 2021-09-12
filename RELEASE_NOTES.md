@@ -1,5 +1,12 @@
 # Release Notes
 
+## v2.0.0
+
+* Support installation with pip
+* Add Any in typing module to several functions as type annotation
+* Add Requirements and Installation to README.md, add Japanese version README.md
+* Add RELEASE_NOTES.md and Japanese RELEASE_NOTES.md
+
 ## v1.0.1
 
 * Add the contents of NOTICE to the beginning of the source code

@@ -1,5 +1,12 @@
 # リリースノート
 
+## v2.0.0
+
+* pipでのインストールに対応
+* typingモジュールにあるAnyを型アノテーションとしていくつかの関数に追加
+* README.mdに必要環境とインストール方法を追加し、日本語版README.mdを追加
+* RELEASE_NOTES.mdと日本語RELEASE_NOTES.mdを追加
+
 ## v1.0.1
 
 * NOTICEの内容をソースコードの先頭に追加
