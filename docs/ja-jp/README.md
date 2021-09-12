@@ -1,20 +1,20 @@
 # pybencode
 
-Simple bencode library for python
+シンプルなpythonのbencodeライブラリ
 
 ![license](https://shields.io/github/license/cpyberry/pybencode)
 
-## Requirements
+## 必要環境
 
 * python 3.6, 3.7, 3.8, 3.9
 
-## Installation
+## インストール方法
 
 ```shell
 pip install cpyberry-pybencode
 ```
 
-## Usage
+## 使い方
 
 ```python
 import pybencode
@@ -31,7 +31,7 @@ pybencode.encode({1: b"kuro", 2: b"sakura"})
 
 ```
 
-Nested lists and dicts can also be encoded.
+入れ子になったリストや辞書型もエンコード出来ます。
 
 ```python
 pybencode.encode([b"cat", 1024, [b"meow", b"woof"]])
@@ -41,9 +41,9 @@ pybencode.encode({1: {b"yuki": b"ghost"}})
 # return b"di1ed4:yuki5:ghostee"
 ```
 
-Decode can do the opposite of the above.
+デコードは上記の逆を行うことができます。
 
-Similarly, you can decode nested list and dict.
+同様に、入れ子になったリストや辞書型もデコード出来ます。
 
 ```python
 pybencode.decode(b"5:night")  # return "night"
@@ -56,9 +56,9 @@ python.decode(b"l3:cati1024el4:meow4:woofee")
 # return [b"cat", 1024, [b"meow", b"woof"]]
 ```
 
-If you want to encode the string to bencode format, you need to encode it with any character code first.
+文字列をbencode形式にエンコードする場合は、最初に任意の文字コードでエンコードする必要があります。
 
-For example
+例えば
 
 ```python
 string = "coppelia"
