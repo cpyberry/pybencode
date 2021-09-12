@@ -8,7 +8,7 @@ github: https://github.com/cpyberry
 """
 
 
-__title__ = "pybencode"
+__title__ = "cpyberry-pybencode"
 __description__ = "Simple bencode library for python"
 __copyright__ = "Copyright 2021 cpyberry"
 __url__ = "https://github.com/cpyberry/pybencode"
