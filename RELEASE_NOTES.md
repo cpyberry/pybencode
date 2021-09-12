@@ -1,5 +1,9 @@
 # Release Notes
 
+## v2.0.1
+
+* When we download the source file with pypi, RELEASE_NOTES.md is included
+
 ## v2.0.0
 
 * Support installation with pip
