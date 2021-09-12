@@ -1,4 +1,5 @@
 include README.md
 include LICENSE
 include NOTICE
+include RELEASE_NOTES.md
 recursive-include docs *
