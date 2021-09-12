@@ -4,6 +4,16 @@ Simple bencode library for python
 
 ![license](https://shields.io/github/license/cpyberry/pybencode)
 
+## Requirements
+
+* python 3.6, 3.7, 3.8, 3.9
+
+## Installation
+
+```shell
+pip install cpyberry-pybencode
+```
+
 ## Usage
 
 ```python

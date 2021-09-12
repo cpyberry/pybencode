@@ -4,7 +4,17 @@
 
 ![license](https://shields.io/github/license/cpyberry/pybencode)
 
-## Usage
+## 必要環境
+
+* python 3.6, 3.7, 3.8, 3.9
+
+## インストール方法
+
+```shell
+pip install cpyberry-pybencode
+```
+
+## 使い方
 
 ```python
 import pybencode
